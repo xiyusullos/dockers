@@ -1,0 +1,17 @@
+version: '3'
+
+volumes:
+  data-rabbitmq:
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.9-management
+    container_name: xrabbitmq_management
+    ports:
+      - 15672:15672
+      # - 5671:5671
+      - 5672:5672
+    volumes:
+      - data-rabbitmq:/var/lib/rabbitmq
+      - ./rabbitmq/cert:/cert
+      - ./rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
